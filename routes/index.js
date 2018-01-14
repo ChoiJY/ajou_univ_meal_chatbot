@@ -24,6 +24,10 @@ router.get('/keyboard', function (req, res) {
     })
 });
 
+router.get('/test', function (req, res) {
+    res.json(crawler.menus());
+});
+
 router.post('/message', function (req, res) {
     var userKey = req.body.user_key;
     var type = req.body.type;
