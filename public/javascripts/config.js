@@ -11,6 +11,5 @@
 
 exports.callUrl = function () {
     const url = 'https://www.ajou.ac.kr/kr/life/food.jsp';
-
     return url;
 };

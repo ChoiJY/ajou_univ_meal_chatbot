@@ -8,12 +8,10 @@
  * 2018.1.14
  *
  */
-var express = require('express');
-var router = express.Router();
-var crawler = require('../public/javascripts/crawler');
-
-const request = require('request'),
-    cheerio = require('cheerio');
+const express = require('express');
+const router = express.Router();
+const crawler = require('../public/javascripts/crawler');
+const templates = require('../public/javascripts/templates');
 
 router.get('/', function (req, res, next) {
     res.render('index', {title: '여길 어떻게 알았지 ㅎㅎㅎㅎㅎ?'});
@@ -21,18 +19,17 @@ router.get('/', function (req, res, next) {
 
 // home keyboard implementation
 router.get('/keyboard', function (req, res) {
-    res.json({
-        "type": "buttons",
-        "buttons": ["교직원식당", "기숙사식당", "학생식당", "학교 밖 추천"]
-    })
+    res.json(templates.homeKeyboard)
 });
 
+// TODO log 이용해서 debug/maintanance 쉽게
 router.get('/test', function (req, res) {
     var menus = crawler.menus();
     console.log(menus);
     res.json(crawler.menus());
 });
 
+// auto response implementation
 router.post('/message', function (req, res) {
     var selected = req.body.content;
     var imageUrl = "";
@@ -42,21 +39,15 @@ router.post('/message', function (req, res) {
             "message": {
                 "text": "원하시는 메뉴를 아래에서 선택해주세요."
             },
-            "keyboard": {
-                "type": "buttons",
-                "buttons": ["교직원식당", "기숙사식당", "학생식당"]
-            }
+            "keyboard": templates.homeKeyboard
         });
     }
-    else if(selected == "학교 밖 추천"){
+    else if (selected == "학교 밖 추천") {
         res.json({
             "message": {
                 "text": "지금 개발중이에요.ㅠㅠ"
             },
-            "keyboard": {
-                "type": "buttons",
-                "buttons": ["교직원식당", "기숙사식당", "학생식당"]
-            }
+            "keyboard": templates.backKeyboard
         })
     }
     else {
@@ -71,7 +62,7 @@ router.post('/message', function (req, res) {
 
         res.json({
             "message": {
-                "text": selected + " 의 오늘 메뉴를 아래에서 확인해주세요! ",
+                "text": selected + "의 오늘 메뉴를 아래에서 확인해주세요! ",
                 "photo": {
                     "url": imageUrl,
                     "width": 640,
@@ -82,16 +73,12 @@ router.post('/message', function (req, res) {
                     "url": "https://www.ajou.ac.kr/kr/life/food.jsp"
                 }
             },
-            "keyboard": {
-                "type": "buttons",
-                "buttons": [
-                    "처음으로"
-                ]
-            }
+            "keyboard": templates.backKeyboard
         });
     }
-})
-;
+});
+
+// TODO 학교 crawling 안되는거 해결해야함
 // router.post('/message', function (req, res) {
 //     var userKey = req.body.user_key;
 //     var type = req.body.type;
