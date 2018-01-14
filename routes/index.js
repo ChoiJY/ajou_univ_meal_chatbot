@@ -23,7 +23,7 @@ router.get('/', function (req, res, next) {
 router.get('/keyboard', function (req, res) {
     res.json({
         "type": "buttons",
-        "buttons": ["교직원식당", "기숙사식당", "학생식당"]
+        "buttons": ["교직원식당", "기숙사식당", "학생식당", "학교 밖 추천"]
     })
 });
 
@@ -35,7 +35,8 @@ router.get('/test', function (req, res) {
 
 router.post('/message', function (req, res) {
     var selected = req.body.content;
-    console.log(selected);
+    var imageUrl = "";
+
     if (selected == "처음으로") {
         res.json({
             "message": {
@@ -47,12 +48,32 @@ router.post('/message', function (req, res) {
             }
         });
     }
+    else if(selected == "학교 밖 추천"){
+        res.json({
+            "message": {
+                "text": "지금 개발중이에요.ㅠㅠ"
+            },
+            "keyboard": {
+                "type": "buttons",
+                "buttons": ["교직원식당", "기숙사식당", "학생식당"]
+            }
+        })
+    }
     else {
+
+        if (selected == "학생식당") {
+            imageUrl = "https://www.ajou.ac.kr/_resources/kr/img/life/img_food_02.gif";
+        } else if (selected == "교직원식당") {
+            imageUrl = "https://www.ajou.ac.kr/_resources/kr/img/life/food_photo05.gif";
+        } else {
+            imageUrl = "https://www.ajou.ac.kr/_resources/kr/img/life/img_food_03.gif";
+        }
+
         res.json({
             "message": {
                 "text": selected + " 의 오늘 메뉴를 아래에서 확인해주세요! ",
                 "photo": {
-                    "url": "https://www.ajou.ac.kr/_resources/kr/img/life/food_photo05.gif",
+                    "url": imageUrl,
                     "width": 640,
                     "height": 480
                 },
