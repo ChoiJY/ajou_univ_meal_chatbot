@@ -35,7 +35,8 @@ router.get('/test', function (req, res) {
 
 router.post('/message', function (req, res) {
     var selected = req.body.content;
-    if(selected == "처음으로"){
+    console.log(selected);
+    if (selected == "처음으로") {
         res.redirect('/keyboard');
     }
     else {
@@ -44,8 +45,8 @@ router.post('/message', function (req, res) {
                 "text": selected + " 의 오늘 메뉴를 아래에서 확인해주세요! ",
                 "photo": {
                     "url": "https://www.ajou.ac.kr/_resources/kr/img/life/food_photo05.gif",
-                    "width": "640",
-                    "height": "480"
+                    "width": 640,
+                    "height": 480
                 },
                 "message_button": {
                     "label": "메뉴 확인하기",
