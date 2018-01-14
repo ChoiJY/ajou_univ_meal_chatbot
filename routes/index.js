@@ -38,14 +38,12 @@ router.post('/message', function (req, res) {
     console.log(selected);
     if (selected == "처음으로") {
         res.json({
-            "message" :{
+            "message": {
                 "text": "원하시는 메뉴를 아래에서 선택해주세요."
             },
-            "keyboard":{
+            "keyboard": {
                 "type": "buttons",
-                "buttons": [
-                    ["교직원식당", "기숙사식당", "학생식당"]
-                ]
+                "buttons": ["교직원식당", "기숙사식당", "학생식당"]
             }
         });
     }
