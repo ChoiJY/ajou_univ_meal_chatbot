@@ -37,7 +37,17 @@ router.post('/message', function (req, res) {
     var selected = req.body.content;
     console.log(selected);
     if (selected == "처음으로") {
-        res.redirect('/keyboard');
+        res.json({
+            "message" :{
+                "text": "원하시는 메뉴를 아래에서 선택해주세요."
+            },
+            "keyboard":{
+                "type": "buttons",
+                "buttons": [
+                    ["교직원식당", "기숙사식당", "학생식당"]
+                ]
+            }
+        });
     }
     else {
         res.json({
