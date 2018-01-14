@@ -17,11 +17,9 @@ const request = require('request');
 const cheerio = require('cheerio');
 
 const config = require('./config');
-
 exports.menus = function () {
-
-    request(config.callUrl(), function (err, res, html) {
-
+    request('http://www.ajou.ac.kr/new/life/food.jsp', function (err, res, html) {
+        console.log(html);
         var menus = [];
         var domMenu = "";
         var studentMenu = "";
@@ -29,12 +27,11 @@ exports.menus = function () {
 
         if (!err) {
             var $ = cheerio.load(html);
-
             // 기숙사식당 메뉴
             $('tri_list02').each(function (i, e) {
                 if (timeCompare() == i) {
                     domMenu = $(e).text().trim();
-                }else{
+                } else {
                     domMenu = "현재 영업시간이 아닙니다.";
                 }
                 menus.push(domMenu);
@@ -44,16 +41,17 @@ exports.menus = function () {
             // 학생식당 메뉴 & 교직원 식당 메뉴
             $('.align-c.no_right').each(function (i, e) {
                 // 학생식당
-                if(i == 0){
+                if (i == 0) {
                     studentMenu = $(e).text().trim();
-                }else if(i == 1){
+                } else if (i == 1) {
                     staffMenu = $(e).text().trim();
-                }else{
+                } else {
                     // TODO 종합관 교직원식당 추가 필요
                 }
                 menus.push(studentMenu);
                 menus.push(staffMenu);
             });
+            console.log(menus);
             return menus;
         }
 
@@ -88,5 +86,4 @@ exports.menus = function () {
             return 3;
         }
     }
-
-};
+}

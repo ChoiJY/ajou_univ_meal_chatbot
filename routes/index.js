@@ -12,8 +12,12 @@ var express = require('express');
 var router = express.Router();
 var crawler = require('../public/javascripts/crawler');
 
+const request = require('request'),
+    cheerio = require('cheerio');
+
 router.get('/', function (req, res, next) {
-    res.render('index', {title: '여길 어떻게 알았지 ㅎㅎㅎㅎㅎ?'});
+    // res.render('index', {title: '여길 어떻게 알았지 ㅎㅎㅎㅎㅎ?'});
+    res.redirect('/keyboard');
 });
 
 // home keyboard implementation
@@ -25,6 +29,8 @@ router.get('/keyboard', function (req, res) {
 });
 
 router.get('/test', function (req, res) {
+    var menus = crawler.menus();
+    console.log(menus);
     res.json(crawler.menus());
 });
 
