@@ -1,6 +1,7 @@
 # 아주대학교 학식 Chatbot server
 
-[![Build Status](https://travis-ci.org/ChoiJY/chatbotTestServer.svg?branch=master)](https://travis-ci.org/ChoiJY/chatbotTestServer) <br>
+[![Build Status](https://travis-ci.org/ChoiJY/chatbotTestServer.svg?branch=master)](https://travis-ci.org/ChoiJY/chatbotTestServer)
+[![Coverage Status](https://coveralls.io/repos/github/ChoiJY/chatbotTestServer/badge.svg?branch=master)](https://coveralls.io/github/ChoiJY/chatbotTestServer?branch=master) <br>
 
 ### 설명
 
