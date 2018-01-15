@@ -1,6 +1,7 @@
 # 아주대학교 학식 Chatbot server
-![Build Status](https://travis-ci.org/ChoiJY/chatbotTestServer.svg?branch=master) <br><br><br>
-[![Banner](sentence_type.png)](http://pf.kakao.com/_hbxfhC)
+
+[![Build Status](https://travis-ci.org/ChoiJY/chatbotTestServer.svg?branch=master)](https://travis-ci.org/ChoiJY/chatbotTestServer) <br>
+[![Banner](sentence_type.png)](http://pf.kakao.com/_hbxfhC) <br>
 위 링크에서 직접 확인해 보실 수 있습니다.
 ### 설명
 
