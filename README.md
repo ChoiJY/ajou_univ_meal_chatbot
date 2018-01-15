@@ -1,6 +1,7 @@
 # 아주대학교 학식 Chatbot server
-![Build Status](https://travis-ci.org/ChoiJY/chatbotTestServer.svg?branch=master) <br>
-http://pf.kakao.com/_hbxfhC 에서 직접 확인해 보세요
+![Build Status](https://travis-ci.org/ChoiJY/chatbotTestServer.svg?branch=master) <br><br><br>
+[![Banner](sentence_type.png)](http://pf.kakao.com/_hbxfhC)
+위 링크에서 직접 확인해 보실 수 있습니다.
 ### 설명
 
 학식 메뉴를 카톡으로 편하게 받아 볼 수 있는 chatbot입니다.
