@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # webstorm folder
 .idea/
 
@@ -9,3 +10,6 @@ views/
 
 # stylesheets
 public/stylesheets/
+
+# coveralls
+.coveralls.yml
