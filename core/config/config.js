@@ -8,8 +8,6 @@
  * 2018.1.14
  *
  */
+const callUrl = 'https://www.ajou.ac.kr/kr/life/food.jsp';
 
-exports.callUrl = function () {
-    const url = 'https://www.ajou.ac.kr/kr/life/food.jsp';
-    return url;
-};
+module.exports = {callUrl};
