@@ -9,3 +9,6 @@ public/stylesheets/
 
 # coveralls
 .coveralls.yml
+
+# node_modules
+/node_modules
